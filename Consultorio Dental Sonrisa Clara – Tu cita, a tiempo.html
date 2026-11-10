@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Consultorio Dental Sonrisa Clara – Tu cita, a tiempo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root{
+  --bg:#ffffff; --sky:#d6eefb; --sky-soft:#eef8fd; --ink:#0e3550; --muted:#3f6279;
+  --brand:#146a9a; --brand-ink:#ffffff; --line:#b5d9ec; --err:#a3281f;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0b2233; --sky:#12384f; --sky-soft:#10303f; --ink:#eaf6fd; --muted:#a9cade;
+    --brand:#7cc8ee; --brand-ink:#06263a; --line:#2a5671; --err:#ff9d94;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0b2233; --sky:#12384f; --sky-soft:#10303f; --ink:#eaf6fd; --muted:#a9cade;
+  --brand:#7cc8ee; --brand-ink:#06263a; --line:#2a5671; --err:#ff9d94;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:18px;line-height:1.5}
+main{max-width:480px;margin:0 auto;padding:0 18px 28px}
+header{background:var(--sky);margin:0 -18px 22px;padding:26px 22px 28px;border-radius:0 0 28px 28px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px}
+.brand svg{flex:none}
+.place{color:var(--muted);margin:2px 0 0 42px;font-size:16px}
+h1{font-size:40px;line-height:1.08;margin:22px 0 0;letter-spacing:-.01em}
+h2{font-size:22px;margin:0 0 10px}
+.actions{display:grid;gap:12px}
+.act{display:block;width:100%;min-height:60px;padding:14px 18px;border:2px solid var(--brand);border-radius:16px;background:var(--brand);color:var(--brand-ink);font:700 20px/1.2 inherit;font-family:inherit;text-align:left;cursor:pointer}
+.act[aria-expanded="true"]{background:var(--bg);color:var(--brand)}
+.act:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible,.seg input:focus-visible+span{outline:3px solid var(--ink);outline-offset:2px}
+.panel{background:var(--sky-soft);border:2px solid var(--line);border-radius:16px;padding:16px;margin-top:-4px}
+.panel[hidden]{display:none}
+label,.lab{display:block;font-weight:700;margin:14px 0 6px}
+.panel>form>:first-child label:first-child{margin-top:0}
+input[type=text],input[type=date],select{width:100%;min-height:52px;padding:10px 14px;font:inherit;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:12px}
+fieldset{border:0;margin:0;padding:0}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.seg label{margin:0}
+.seg input{position:absolute;opacity:0}
+.seg span{display:flex;align-items:center;justify-content:center;min-height:52px;border:2px solid var(--line);border-radius:12px;background:var(--bg);font-weight:700;cursor:pointer}
+.seg input:checked+span{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.btn{display:block;width:100%;min-height:56px;margin-top:18px;border:0;border-radius:14px;background:var(--brand);color:var(--brand-ink);font:700 19px/1.2 inherit;font-family:inherit;cursor:pointer}
+.msg{min-height:0;margin:12px 0 0;font-weight:700;color:var(--err)}
+.msg:empty{display:none}
+.fallback{margin:12px 0 0;font-size:16px}
+.fallback .btn{display:flex;align-items:center;justify-content:center;text-decoration:none;margin-top:12px}
+.fallback .btn.alt{background:var(--bg);color:var(--brand);border:2px solid var(--brand)}
+.fallback textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:10px}
+section.info{margin-top:30px}
+ul.check{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ul.check li{padding-left:34px;position:relative}
+ul.check li::before{content:"";position:absolute;left:4px;top:.45em;width:11px;height:6px;border-left:3px solid var(--brand);border-bottom:3px solid var(--brand);transform:rotate(-45deg)}
+.hours{display:grid;gap:6px;margin:0;padding:14px 16px;background:var(--sky-soft);border-radius:14px}
+.hours div{display:flex;justify-content:space-between;gap:12px}
+.hours dt{font-weight:700}.hours dd{margin:0;text-align:right}
+footer{margin-top:30px;padding-top:16px;border-top:2px solid var(--line);color:var(--muted);font-size:16px}
+@media (prefers-reduced-motion:no-preference){.panel{animation:open .18s ease-out}@keyframes open{from{opacity:0;transform:translateY(-6px)}}}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="brand">
+      <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#fff" stroke="#146a9a" stroke-width="2"/><path d="M8 17c2 5 14 5 16 0" fill="none" stroke="#146a9a" stroke-width="3" stroke-linecap="round"/><circle cx="11.5" cy="11.5" r="1.8" fill="#146a9a"/><circle cx="20.5" cy="11.5" r="1.8" fill="#146a9a"/></svg>
+      Consultorio Dental Sonrisa Clara
+    </div>
+    <p class="place">Jesús María, Lima</p>
+    <h1>Tu cita, a tiempo</h1>
+  </header>
+
+  <div class="actions" id="actions">
+    <button class="act" type="button" aria-expanded="false" aria-controls="p-agendar" data-open="agendar">Agendar mi control</button>
+    <section class="panel" id="p-agendar" hidden>
+      <form data-kind="agendar" novalidate>
+        <label for="a-nombre">Tu nombre</label>
+        <input id="a-nombre" name="nombre" type="text" autocomplete="name" required>
+        <label for="a-servicio">Servicio</label>
+        <select id="a-servicio" name="servicio" required>
+          <option>Control y limpieza</option><option>Curación</option><option>Ortodoncia</option><option>Otro</option>
+        </select>
+        <label for="a-dia">Día preferido</label>
+        <input id="a-dia" name="dia" type="date" required>
+        <fieldset><legend class="lab">Turno</legend>
+          <div class="seg">
+            <label><input type="radio" name="turno" value="mañana" checked><span>Mañana</span></label>
+            <label><input type="radio" name="turno" value="tarde"><span>Tarde</span></label>
+          </div>
+        </fieldset>
+        <p class="msg" role="alert"></p>
+        <button class="btn" type="submit">Enviar por WhatsApp</button>
+        <p class="fallback" hidden></p>
+      </form>
+    </section>
+
+    <button class="act" type="button" aria-expanded="false" aria-controls="p-confirmar" data-open="confirmar">Confirmar mi cita</button>
+    <section class="panel" id="p-confirmar" hidden>
+      <form data-kind="confirmar" novalidate>
+        <label for="c-nombre">Tu nombre</label>
+        <input id="c-nombre" name="nombre" type="text" autocomplete="name" required>
+        <label for="c-fecha">Fecha de tu cita</label>
+        <input id="c-fecha" name="fecha" type="date" required>
+        <p class="msg" role="alert"></p>
+        <button class="btn" type="submit">Confirmar por WhatsApp</button>
+        <p class="fallback" hidden></p>
+      </form>
+    </section>
+
+    <button class="act" type="button" aria-expanded="false" aria-controls="p-reprogramar" data-open="reprogramar">Reprogramar mi cita</button>
+    <section class="panel" id="p-reprogramar" hidden>
+      <form data-kind="reprogramar" novalidate>
+        <label for="r-nombre">Tu nombre</label>
+        <input id="r-nombre" name="nombre" type="text" autocomplete="name" required>
+        <label for="r-actual">Fecha actual de tu cita</label>
+        <input id="r-actual" name="actual" type="date" required>
+        <label for="r-nueva">Nueva fecha preferida</label>
+        <input id="r-nueva" name="nueva" type="date" required>
+        <p class="msg" role="alert"></p>
+        <button class="btn" type="submit">Reprogramar por WhatsApp</button>
+        <p class="fallback" hidden></p>
+      </form>
+    </section>
+  </div>
+
+  <section class="info">
+    <h2>Antes de tu cita</h2>
+    <ul class="check">
+      <li>Llega 10 minutos antes.</li>
+      <li>Si no puedes asistir, avísanos con 24 horas de anticipación.</li>
+      <li>Trae tu lista de medicamentos.</li>
+    </ul>
+  </section>
+
+  <section class="info">
+    <h2>Horario</h2>
+    <dl class="hours">
+      <div><dt>Lunes a viernes</dt><dd>9:00 am a 8:00 pm</dd></div>
+      <div><dt>Sábados</dt><dd>9:00 am a 1:00 pm</dd></div>
+    </dl>
+  </section>
+
+  <footer>Tus datos solo se usan para gestionar tu cita.</footer>
+</main>
+
+<script>
+(function(){
+  var NUMERO = "51949431780";
+  var NOMBRE = "Consultorio Dental Sonrisa Clara";
+  var MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+  var DIAS = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+
+  function hoy(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+  function parse(v){var p=v.split("-");return new Date(+p[0],+p[1]-1,+p[2]);}
+  function bonita(v){var d=parse(v);return DIAS[d.getDay()]+" "+d.getDate()+" de "+MESES[d.getMonth()]+" de "+d.getFullYear();}
+
+  var min=hoy();
+  document.querySelectorAll('input[type=date]').forEach(function(i){i.min=min;});
+
+  var botones=document.querySelectorAll(".act");
+  botones.forEach(function(b){
+    b.addEventListener("click",function(){
+      var abrir=b.getAttribute("aria-expanded")!=="true";
+      botones.forEach(function(o){
+        o.setAttribute("aria-expanded","false");
+        document.getElementById(o.getAttribute("aria-controls")).hidden=true;
+      });
+      if(abrir){
+        b.setAttribute("aria-expanded","true");
+        var p=document.getElementById(b.getAttribute("aria-controls"));
+        p.hidden=false;
+        setTimeout(function(){p.scrollIntoView({behavior:"smooth",block:"nearest"});var f=p.querySelector("input[type=text]");if(f)f.focus({preventScroll:true});},30);
+      }
+    });
+  });
+
+  function error(form,t){form.querySelector(".msg").textContent=t;}
+
+  document.querySelectorAll("form").forEach(function(form){
+    form.addEventListener("submit",function(e){
+      e.preventDefault();
+      error(form,"");
+      var d=new FormData(form), k=form.dataset.kind;
+      var nombre=(d.get("nombre")||"").trim();
+      if(!nombre){error(form,"Escribe tu nombre.");form.querySelector("input[type=text]").focus();return;}
+      var texto;
+      if(k==="agendar"){
+        var dia=d.get("dia");
+        if(!dia){error(form,"Elige un día preferido.");return;}
+        if(dia<min){error(form,"Elige una fecha desde hoy.");return;}
+        var wd=parse(dia).getDay(), turno=d.get("turno");
+        if(wd===0){error(form,"Los domingos no atendemos. Elige otro día.");return;}
+        if(wd===6&&turno==="tarde"){error(form,"Los sábados atendemos solo hasta la 1:00 pm. Elige turno mañana u otro día.");return;}
+        texto="Hola, soy "+nombre+". Quisiera agendar una cita en "+NOMBRE+".\nServicio: "+d.get("servicio")+"\nDía preferido: "+bonita(dia)+"\nTurno: "+turno+"\n¿Qué horario tienen disponible? Gracias.";
+      }else if(k==="confirmar"){
+        var f=d.get("fecha");
+        if(!f){error(form,"Elige la fecha de tu cita.");return;}
+        texto="Hola, soy "+nombre+". Confirmo mi cita en "+NOMBRE+" del "+bonita(f)+". Gracias.";
+      }else{
+        var a=d.get("actual"), n=d.get("nueva");
+        if(!a){error(form,"Elige la fecha actual de tu cita.");return;}
+        if(!n){error(form,"Elige la nueva fecha preferida.");return;}
+        if(n<min){error(form,"La nueva fecha debe ser desde hoy.");return;}
+        if(parse(n).getDay()===0){error(form,"Los domingos no atendemos. Elige otra fecha.");return;}
+        texto="Hola, soy "+nombre+". Necesito reprogramar mi cita en "+NOMBRE+".\nFecha actual: "+bonita(a)+"\nNueva fecha preferida: "+bonita(n)+"\n¿Me confirman disponibilidad? Gracias.";
+      }
+      var url="https://wa.me/"+NUMERO+"?text="+encodeURIComponent(texto);
+      var fb=form.querySelector(".fallback");
+      fb.hidden=false;
+      fb.innerHTML="";
+      var abrir=document.createElement("a");
+      abrir.className="btn";abrir.href=url;abrir.target="_blank";abrir.rel="noopener";
+      abrir.textContent="Abrir WhatsApp";
+      var ayuda=document.createElement("p");
+      ayuda.textContent="¿No se abre? Copia este mensaje y envíalo al +51 949 431 780:";
+      var ta=document.createElement("textarea");
+      ta.readOnly=true;ta.value=texto;ta.rows=6;ta.setAttribute("aria-label","Mensaje para WhatsApp");
+      var cop=document.createElement("button");
+      cop.type="button";cop.className="btn alt";cop.textContent="Copiar mensaje";
+      cop.addEventListener("click",function(){
+        ta.select();
+        try{document.execCommand("copy");}catch(_){}
+        try{if(navigator.clipboard){navigator.clipboard.writeText(texto).catch(function(){});}}catch(_){}
+        cop.textContent="Mensaje copiado";
+      });
+      fb.appendChild(abrir);fb.appendChild(ayuda);fb.appendChild(ta);fb.appendChild(cop);
+      fb.scrollIntoView({behavior:"smooth",block:"nearest"});
+      try{window.open(url,"_blank","noopener");}catch(_){}
+    });
+  });
+})();
+</script>
+</body>
+</html>
